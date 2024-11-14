@@ -5,39 +5,44 @@ public class PigLatinTranslator
   public static Book translate(Book input)
   {
     Book translatedBook = new Book();
-
-    // Add code here to populate translatedBook with a translation of the input book.
-    // Curent do-nothing code will return an empty book.
-
+// Add code here
     return translatedBook;
   }
 
   public static String translate(String input)
   {
-    // System.out.println("Translate String: '" + input + "'");
-
-    // Replace this code to translate a string input.
-    // The input to this function could be any English string. 
-    // A sentence, paragraph, or a single word. 
-    // It should call translateWord at least once.
-    String result = translateWord(input);
-
-    return result;
+    String result = input;
+    int start = 0;
+    String final_string = "";
+    for(int i =0; i< result.length(); i++){
+      if(result.substring(i, i+1).equals(" ")|| result.substring(i, i+1).equals("-")){
+        String sub = translateWord(result.substring(start, i));
+        System.out.println(sub);
+        final_string += sub + result.substring(i, i+1);
+        start = i+1;
+      }
+      
+    }
+    final_string += translateWord(result.substring(start, result.length()));
+  
+    return final_string;
   }
 
   private static String translateWord(String input)
   {
-    // System.out.println("translateWord: '" + input + "'");
-
-    // Replace this code to correctly translate a single word.
-    // Start here first!
     String result = input;
-    
+    if(result.length()>0){
+      for(int i=0;i<result.length(); i++){
+        if((result.charAt(i)== 'a'|| result.charAt(i)== 'e'|| result.charAt(i)== 'i'|| result.charAt(i)== 'o'|| result.charAt(i)== 'u')|| (result.charAt(i)== 'A'|| result.charAt(i)== 'E'|| result.charAt(i)== 'I'|| result.charAt(i)== 'O'|| result.charAt(i)== 'U')){
+          result = result.substring(i) + result.substring(0, i);
+          return (result+="ay");
+           }
+        }
+      
+      if(input.substring(0, 1).equals(input.substring(0, 1).toUpperCase())){
+        return result.substring(0,1).toUpperCase() + result.substring(1).toLowerCase();
+      }
+    }
     return result;
   }
-
-  // Add additonal private methods here.
-  // For example, I had one like this:
-  // private static String capitalizeFirstLetter(String input)
-
 }
