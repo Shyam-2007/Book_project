@@ -5,21 +5,21 @@ public class TestSuite
     {
         boolean pass = true;
         // "null" :) 
-        pass &= basicTest("null", "ullnay");
+        pass &= basicTest("null", "Ullnay");
 
         // Test that empty strings don't crash.
         pass &= basicTest("","");
         pass &= basicTest("    ", "    ");
 
         // Vowel first letter
-        pass &= basicTest("eat", "eatay");
+        pass &= basicTest("eat", "Eatay");
         // Single consonant
-        pass &= basicTest("pig", "igpay");
+        pass &= basicTest("pig", "Igpay");
         // Double consonant
-        pass &= basicTest("trash", "ashtray");
+        pass &= basicTest("trash", "Ashtray");
 
         // Multiple words
-        pass &= basicTest("pigs eat trash", "igspay eatay ashtray");
+        pass &= basicTest("pigs eat trash", "Igspay Eatay Ashtray");
 
         // Special words
         // M.C. - initials
@@ -30,7 +30,7 @@ public class TestSuite
 
         // Punctuation
         pass &= basicTest("Trash.", "Ashtray.");
-        pass &= basicTest("clean-cut", "eanclay-utcay");
+        pass &= basicTest("clean-cut", "Eanclay-Utcay");
 
         if (pass == true)
         {
